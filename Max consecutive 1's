@@ -1,0 +1,52 @@
+//BRUTE FORCE ::  
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[] arr = {1,1,0,1,1,1};
+        int s = max(arr);
+        System.out.println(s);
+    }
+    static int max(int[] arr){
+        int max = 0,count;
+       for(int i=0;i<arr.length;i++){
+           if(arr[i]==1){
+               count = 1;
+               for(int j=i+1;j<arr.length;j++){
+                   if(arr[j]==1){
+                       count++;
+                       max = Math.max(count,max);
+                   }
+                   else{
+                       count = 0;
+                       continue;
+                   }
+               }
+           }
+           else{
+               continue;
+           }
+       }
+       return max;
+    } 
+
+
+//OPTIMIZED::
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+       int max = 0,count = 0;
+       for(int i=0;i<nums.length;i++){
+           if(nums[i]==1){
+               count++;
+               max = Math.max(count,max);
+           }
+           else{
+               count=0;
+               continue;
+           }
+       }
+       return max;
+    }
+}
