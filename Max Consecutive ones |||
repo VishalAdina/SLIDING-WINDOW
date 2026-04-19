@@ -35,5 +35,26 @@ public class Main {
     }
 
 
-//OPTIMIZED::
+//OPTIMIZED::(two pointers + sliding windows)
 
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int left = 0,max = 0,zerocount=0;
+        for(int r =0;r<nums.length;r++){
+            if(nums[r] == 0)
+            {
+                zerocount++;
+            }
+            while(zerocount > k)
+            {
+                if(nums[left] == 0)
+                {
+                    zerocount--;
+                }
+                left++;
+            }
+            max = Math.max(max ,r-left+1);
+        }
+        return max;
+    }
+}
